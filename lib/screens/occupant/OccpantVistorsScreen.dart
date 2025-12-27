@@ -214,6 +214,7 @@ class _VisitorScreenState extends State<Occpantvistorsscreen> {
     print("User ID: $user_id");
   }
 
+
   Future<void> fetchVisitorRecords() async {
     setState(() => isLoading = true);
     try {
@@ -222,8 +223,16 @@ class _VisitorScreenState extends State<Occpantvistorsscreen> {
         body: {"user_id": user_id},
       );
 
+
+      print('data ${response.body.toString()}');
+
+
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
+
+        print('data ${data.toString()}');
+
+
         if (data['success'] == true) {
           final List records = data['visitors'];
           visitors = records.map((json) => VisitorRecord.fromJson(json)).toList();
@@ -258,6 +267,91 @@ class _VisitorScreenState extends State<Occpantvistorsscreen> {
       });
     }
   }
+
+
+
+
+
+
+
+  Widget _statusButton({
+    required String text,
+    required Color color,
+    required Color textColor,
+    required VoidCallback onTap,
+  }) {
+    return SizedBox(
+      width: 110,
+      height: 42,
+      child: ElevatedButton(
+        onPressed: onTap,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: color,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(color: textColor),
+        ),
+      ),
+    );
+  }
+
+
+
+
+
+
+  Future<void> approvedFun(String visitorId ) async {
+    try {
+      print("Fetching work permits...");
+      var response = await http.post(
+        Uri.parse('${Strings.Url}api/tenant_approve_visitor'),
+
+        body: {'visitor_id': visitorId},
+      );
+
+      print(response.body);
+      fetchVisitorRecords();
+
+
+    } catch (e) {
+      print('Fetch error: $e');
+      setState(() {
+
+
+      });
+    }
+  }
+
+
+  Future<void> rejectFun(String visitorId ) async {
+    try {
+      print("Fetching work permits...");
+      var response = await http.post(
+        Uri.parse('${Strings.Url}api/tenant_reject_visitor'),
+
+        body: {'visitor_id': visitorId},
+      );
+
+      fetchVisitorRecords();
+
+
+      print(response.body);
+
+
+    } catch (e) {
+      print('Fetch error: $e');
+      setState(() {
+
+
+      });
+    }
+  }
+
+
 
   @override
   void initState() {
@@ -351,6 +445,7 @@ class _VisitorScreenState extends State<Occpantvistorsscreen> {
                                 ),
                               ),
                             ),
+
                             Chip(
                               label: Text(visitor.status ?? ""),
                               backgroundColor: visitor.status == "Approved"
@@ -362,12 +457,136 @@ class _VisitorScreenState extends State<Occpantvistorsscreen> {
                                     : Colors.grey,
                               ),
                             ),
+
+
+                            // Column(
+                            //   children: [
+                            //     _statusButton(
+                            //       text: "Pending",
+                            //       color: Colors.grey.shade300,
+                            //       textColor: Colors.grey,
+                            //     ),
+                            //     const SizedBox(height: 10),
+                            //     _statusButton(
+                            //       text: "Approve",
+                            //       color: Colors.green,
+                            //       textColor: Colors.white,
+                            //     ),
+                            //     const SizedBox(height: 10),
+                            //     _statusButton(
+                            //       text: "Reject",
+                            //       color: Colors.red,
+                            //       textColor: Colors.white,
+                            //     ),
+                            //   ],
+                            // ),
+
+
+                            //     const SizedBox(height: 10),
+                            //     _statusButton(
+                            //       text: "Approve",
+                            //       color: Colors.green,
+                            //       textColor: Colors.white,
+                            //     ),
+                            //     const SizedBox(height: 10),
+                            //     _statusButton(
+                            //       text: "Reject",
+                            //       color: Colors.red,
+                            //       textColor: Colors.white,
+                            //     ),
+
+
+                          ],
+
+
+
+
+
+
+
+                        ),
+
+
+
+
+
+
+
+
+
+
+
+
+                        SizedBox(height: height * 0.3),
+                        Row(
+
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                          children: [
+                            Text("Phone: ${visitor.phoneNumber ?? ""}"),
+
+
+                            const SizedBox(height: 10),
+
+
+                            visitor.status == "Pending"?
+                            _statusButton(
+                              text: "Approve",
+                              color: Colors.green,
+                              textColor: Colors.white,
+
+
+                              onTap: () {
+
+
+                                approvedFun(visitor.id.toString());
+
+                                print("Approve clicked");
+                              },
+
+                            ):SizedBox()
+
+
                           ],
                         ),
-                        SizedBox(height: height * 0.3),
-                        Text("Phone: ${visitor.phoneNumber ?? ""}"),
                         Text("Email: ${visitor.email ?? ""}"),
-                        Text("Company: ${visitor.company ?? ""}"),
+                        Row(
+
+
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                          children: [
+                            Text("Company: ${visitor.company ?? ""}"),
+
+                            const SizedBox(height: 10),
+
+
+                            visitor.status == "Pending"?
+
+                            _statusButton(
+                              text: "Reject",
+                              color: Colors.red,
+                              textColor: Colors.white,
+
+                              onTap: () {
+
+
+
+                                rejectFun(visitor.id.toString());
+                                print("Reject clicked");
+
+                               },
+
+                            ):SizedBox()
+
+
+
+
+
+                          ],
+                        ),
                         Text("Purpose: ${visitor.purpose ?? ""}"),
                         Text(
                             "Check-in: ${visitor.checkinDate.toString()} at ${visitor.checkinTime.toString()}"),

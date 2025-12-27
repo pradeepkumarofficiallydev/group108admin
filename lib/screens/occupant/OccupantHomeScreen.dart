@@ -14,9 +14,11 @@ import '../../Utils/Strings.dart';
 import '../../models/CommunicationNotice.dart';
 import '../../models/MenuItem.dart';
 import '../../models/Ticket.dart';
+import '../AdminsScreen.dart';
 import '../BookingHistory.dart';
 import '../CommunicationsViewScreen.dart';
 import '../HomeScreen.dart';
+import '../SeatBookingsScreen.dart';
 import '../SosScreen.dart';
 import '../VistorsScreen.dart';
 import 'GetPassOccupantScreen.dart';
@@ -1827,6 +1829,250 @@ class _HomeScreenState extends State<Occupanthomescreen> with SingleTickerProvid
 
 /////////////////////////
 
+// class CustomBottomNavigationBar extends StatefulWidget {
+//   const CustomBottomNavigationBar({Key? key}) : super(key: key);
+//
+//   @override
+//   _CustomBottomNavigationBarState createState() =>
+//       _CustomBottomNavigationBarState();
+// }
+//
+// class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
+//   int _selectedIndex = 0; // To track the selected item index
+//
+//   // Add your screens here
+//   final List<Widget> _screens = [
+//     HomeScreen(),
+//
+//     Occpantvistorsscreen(),
+//   //  OccupantRaisedTicketScreen(),
+//     MyBookingsScreen(),
+//     //RecentBookedParkingScreen(),
+//     CommunityCornerScreen()
+//
+//   ];
+//
+//   void _onNavItemTapped(int index) {
+//     setState(() {
+//       //_selectedIndex = index; // Update selected index
+//     });
+//     // Navigate to the corresponding screen
+//
+//     if (index != 0) {
+//       Navigator.push(
+//         context,
+//         MaterialPageRoute(builder: (context) => _screens[index]),
+//       );
+//     }
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     double width = MediaQuery.of(context).size.width * 0.24; // Responsive width
+//     double height = width * 0.4; // Maintain aspect ratio
+//
+//     return Container(
+//       margin:const EdgeInsets.only(bottom: 20) ,
+//       //margin: const EdgeInsets.all(20),
+//       height: 70,
+//
+//       color: AppColor.grayColor,
+//       // decoration: BoxDecoration(
+//       //   color: Color(0xFF1371B5),
+//       //   borderRadius: const BorderRadius.all(
+//       //     Radius.circular(15),
+//       //   ),
+//       // ),
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceAround,
+//         crossAxisAlignment: CrossAxisAlignment.center,
+//         children: [
+//           // _buildNavItem(
+//           //     index: 0,
+//           //     icon: Icons.home,
+//           //     label: 'Home',
+//           //     size: height * 0.64,
+//           //     height: height),
+//           // _buildNavItem(
+//           //     index: 1,
+//           //     icon: Icons.qr_code,
+//           //     label: 'Visitors',
+//           //     size: height * 0.64,
+//           //     height: height),
+//           // _buildNavItem(
+//           //     index: 2,
+//           //     icon: Icons.add_circle_outlined,
+//           //     label: '',
+//           //     size: height * 1.3,
+//           //     height: height),
+//           // _buildNavItem(
+//           //     index: 3,
+//           //     icon: Icons.airplane_ticket,
+//           //     label: 'Booking',
+//           //     size: height * 0.64,
+//           //     height: height),
+//           // _buildNavItem(
+//           //     index: 4,
+//           //     icon: Icons.people,
+//           //     label: 'Community',
+//           //     size: height * 0.64,
+//           //     height: height),
+//
+//
+//
+//
+//
+//           _buildNavItem(
+//               index: 0,
+//               icon: "assets/images/homeicon.png",
+//               label: 'Home',
+//               size: height * 0.64,
+//               height: height),
+//           _buildNavItem(
+//               index: 1,
+//               icon:"assets/images/visitopr.png",
+//               label: 'Visitors',
+//               size: height * 0.64,
+//               height: height),
+//           // _buildNavItem(
+//           //     index: 2,
+//           //     icon: "assets/images/qr_code.png",
+//           //     label: '',
+//           //     size: height * 1.3,
+//           //     height: height),
+//
+//
+//
+//           _buildNavItem(
+//               index: 2,
+//               icon: "assets/images/seat_booking.png",
+//               label: 'Booking',
+//               size: height * 0.64,
+//               height: height),
+//           _buildNavItem(
+//               index: 3,
+//               icon: "assets/images/community.png",
+//               label: 'Community',
+//               size: height * 0.64,
+//               height: height),
+//
+//
+//
+//         ],
+//       ),
+//     );
+//   }
+//
+//   Widget _buildNavItem({
+//     required int index,
+//     required String icon,
+//     required String label,
+//     required double size,
+//     required double height,
+//   }) {
+//     // Change color based on the selected index
+//     final bool isSelected = _selectedIndex == index;
+//
+//     return GestureDetector(
+//       onTap: () => _onNavItemTapped(index), // Handle navigation and selection
+//       child: Column(
+//         mainAxisAlignment: MainAxisAlignment.center,
+//         children: [
+//
+//
+//           // label==''   ?
+//           //
+//           // CircleAvatar(
+//           //   radius: size / 2,
+//           //   backgroundColor: Colors.white,
+//           //   child: CircleAvatar(
+//           //
+//           //     backgroundColor: AppColor.whitecolor,
+//           //     radius: (size / 2) - 4,
+//           //     backgroundImage: AssetImage(
+//           //
+//           //
+//           //         'assets/images/flight_ticket_icon.png'),
+//           //   ),
+//           // ):
+//           //
+//           //
+//           // label=='Visitors'   ?
+//           //
+//           // Image.asset(
+//           //   fit: BoxFit.cover,
+//           //   color:  Colors.white
+//           //   , 'assets/images/visitor_icon.png'
+//           //   ,width: height*.6,height:  height*.6,):
+//           //
+//           //
+//           //
+//           // label=='Booking' ?
+//           // //
+//           // // CircleAvatar(
+//           // //   backgroundColor: AppColor.whitecolor,
+//           // //   radius: (size / 2) - 4,
+//           // //   backgroundImage: AssetImage(
+//           // //
+//           // //
+//           // //       'assets/images/seat_booking_icon.png'),
+//           // // ):
+//           //
+//           //
+//           // Image.asset(
+//           //   fit: BoxFit.cover,
+//           //   color:  Colors.white
+//           //   ,
+//           //
+//           //   'assets/images/seat_booking_icon.png'
+//           //   ,width: height*.6,height:  height*.6,):
+//
+//
+//
+//           Image.asset(
+//
+//             width: height*.6,height:  height*.6,
+//             color: isSelected ? Colors.orange : null,
+//
+//             icon,
+//            // color: isSelected ? Colors.orange : Colors.white,
+//             // Change color on selection
+//            // size: size,
+//           ),
+//
+//           label.isEmpty
+//               ? const SizedBox(height: 0)
+//               : Column(
+//             children: [
+//               const SizedBox(height: 4),
+//               Text(
+//                 label,
+//                 style: TextStyle(
+//                   //color: isSelected ? Colors.orange : Colors.white,
+//                   fontSize: height * 0.3,
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+//
+//
+//
+//
+//
+//
+//
+//
+// }
+
+
+
+
+
+
 class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar({Key? key}) : super(key: key);
 
@@ -1840,11 +2086,23 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
 
   // Add your screens here
   final List<Widget> _screens = [
-    HomeScreen(),
+
+    // HomeScreen(),
+    // Adminsscreen(),
+    // // RaisedTicketsScreen(),
+    // SeatBookingsScreen(),
+    // CommunityCornerScreen(),
+    //
+
+
+
+
+
+        HomeScreen(),
 
     Occpantvistorsscreen(),
   //  OccupantRaisedTicketScreen(),
-    MyBookingsScreen(),
+    OccupantRaisedTicketScreen(),
     //RecentBookedParkingScreen(),
     CommunityCornerScreen()
 
@@ -1870,93 +2128,111 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     double height = width * 0.4; // Maintain aspect ratio
 
     return Container(
-      margin:const EdgeInsets.only(bottom: 20) ,
-      //margin: const EdgeInsets.all(20),
+      margin: const EdgeInsets.all(20),
       height: 70,
+      decoration: BoxDecoration(
+        color: Colors.black,
 
-      color: AppColor.grayColor,
-      // decoration: BoxDecoration(
-      //   color: Color(0xFF1371B5),
-      //   borderRadius: const BorderRadius.all(
-      //     Radius.circular(15),
-      //   ),
-      // ),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(15),
+        ),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // _buildNavItem(
-          //     index: 0,
-          //     icon: Icons.home,
-          //     label: 'Home',
-          //     size: height * 0.64,
-          //     height: height),
-          // _buildNavItem(
-          //     index: 1,
-          //     icon: Icons.qr_code,
-          //     label: 'Visitors',
-          //     size: height * 0.64,
-          //     height: height),
-          // _buildNavItem(
-          //     index: 2,
-          //     icon: Icons.add_circle_outlined,
-          //     label: '',
-          //     size: height * 1.3,
-          //     height: height),
-          // _buildNavItem(
-          //     index: 3,
-          //     icon: Icons.airplane_ticket,
-          //     label: 'Booking',
-          //     size: height * 0.64,
-          //     height: height),
-          // _buildNavItem(
-          //     index: 4,
-          //     icon: Icons.people,
-          //     label: 'Community',
-          //     size: height * 0.64,
-          //     height: height),
 
+
+
+          // 1st home
+          // 2nd Admins
+          // 3rd + wala jo icon hai ticket raise
+          // 4th Seat booking
+          // 5th Community
+          //
+          //
 
 
 
 
           _buildNavItem(
               index: 0,
-              icon: "assets/images/homeicon.png",
+              icon:"assets/images/home.png",
               label: 'Home',
-              size: height * 0.64,
+              size: height * 0.6,
               height: height),
+
           _buildNavItem(
+
               index: 1,
-              icon:"assets/images/visitopr.png",
-              label: 'Visitors',
-              size: height * 0.64,
+              icon: 'assets/images/admin_icon.png',
+              label: 'Visitor',
+              size: height * 0.6,
               height: height),
-          // _buildNavItem(
-          //     index: 2,
-          //     icon: "assets/images/qr_code.png",
-          //     label: '',
-          //     size: height * 1.3,
-          //     height: height),
-
-
 
           _buildNavItem(
               index: 2,
-              icon: "assets/images/seat_booking.png",
-              label: 'Booking',
-              size: height * 0.64,
+              icon: 'assets/images/ticket.png',
+              label: 'Tickets',
+              size: height * 0.6,
               height: height),
+
+
+
+          // _buildNavItem(
+          //     index: 3,
+          //     icon: 'assets/images/seat_booking.png',
+          //     label: 'Seat booking',
+          //     size: height * 0.6,
+          //     height: height),
+
           _buildNavItem(
               index: 3,
-              icon: "assets/images/community.png",
+              icon: 'assets/images/people.png',
               label: 'Community',
-              size: height * 0.64,
+
+              size: height * 0.6,
               height: height),
-
-
-
         ],
+
+
+
+
+        // _buildNavItem(
+        //     index: 0,
+        //     icon: Icons.home,
+        //     label: 'Home',
+        //     size: height * 0.6,
+        //     height: height),
+        // _buildNavItem(
+        //     index: 1,
+        //     icon: Icons.person,
+        //     label: 'Admins',
+        //     size: height * 0.6,
+        //     height: height),
+        // _buildNavItem(
+        //     index: 2,
+        //     icon: Icons.airplane_ticket_outlined,
+        //     label: '',
+        //     size: height * 1.1,
+        //     height: height),
+        // _buildNavItem(
+        //     index: 3,
+        //     icon: Icons.airplane_ticket,
+        //     label: 'Seat booking',
+        //     size: height * 0.6,
+        //     height: height),
+        // _buildNavItem(
+        //     index: 4,
+        //     icon: Icons.people,
+        //     label: 'Community',
+        //
+        //     size: height * 0.6,
+        //     height: height),
+        // ],
+
+
+
       ),
     );
   }
@@ -1972,96 +2248,51 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     final bool isSelected = _selectedIndex == index;
 
     return GestureDetector(
-      onTap: () => _onNavItemTapped(index), // Handle navigation and selection
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        onTap: () => _onNavItemTapped(index), // Handle navigation and selection
+        child:
+
+        Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Image.asset(
+              icon,
+              width: height * .6,
+              height: height * .6,
+              color: isSelected ? Colors.white : Colors.white,
+              fit: BoxFit.cover,
+            ),
 
 
-          // label==''   ?
-          //
-          // CircleAvatar(
-          //   radius: size / 2,
-          //   backgroundColor: Colors.white,
-          //   child: CircleAvatar(
-          //
-          //     backgroundColor: AppColor.whitecolor,
-          //     radius: (size / 2) - 4,
-          //     backgroundImage: AssetImage(
-          //
-          //
-          //         'assets/images/flight_ticket_icon.png'),
-          //   ),
-          // ):
-          //
-          //
-          // label=='Visitors'   ?
-          //
-          // Image.asset(
-          //   fit: BoxFit.cover,
-          //   color:  Colors.white
-          //   , 'assets/images/visitor_icon.png'
-          //   ,width: height*.6,height:  height*.6,):
-          //
-          //
-          //
-          // label=='Booking' ?
-          // //
-          // // CircleAvatar(
-          // //   backgroundColor: AppColor.whitecolor,
-          // //   radius: (size / 2) - 4,
-          // //   backgroundImage: AssetImage(
-          // //
-          // //
-          // //       'assets/images/seat_booking_icon.png'),
-          // // ):
-          //
-          //
-          // Image.asset(
-          //   fit: BoxFit.cover,
-          //   color:  Colors.white
-          //   ,
-          //
-          //   'assets/images/seat_booking_icon.png'
-          //   ,width: height*.6,height:  height*.6,):
-
-
-
-          Image.asset(
-
-            width: height*.6,height:  height*.6,
-            color: isSelected ? Colors.orange : null,
-
-            icon,
-           // color: isSelected ? Colors.orange : Colors.white,
-            // Change color on selection
-           // size: size,
-          ),
-
-          label.isEmpty
-              ? const SizedBox(height: 0)
-              : Column(
-            children: [
+            if (label.isNotEmpty) ...[
               const SizedBox(height: 4),
               Text(
                 label,
                 style: TextStyle(
-                  //color: isSelected ? Colors.orange : Colors.white,
-                  fontSize: height * 0.3,
+                  color: isSelected ? Colors.white : Colors.white,
+                  fontSize: height * 0.25,
                 ),
               ),
             ],
-          ),
-        ],
-      ),
+
+            const SizedBox(height: 8),
+
+
+            if (isSelected)
+              Container(
+                margin: const EdgeInsets.only(top: 0),
+                width: height * 1.2,
+                height: 2,
+                color: Colors.white,
+              ),
+            const SizedBox(height: 2),
+
+          ],
+        )
+
+
+
+
+
     );
   }
-
-
-
-
-
-
-
-
 }

@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:device_info_plus/device_info_plus.dart';
+// import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:jsp/Utils/AppColors.dart';
 import 'package:jsp/screens/HomeScreen.dart';
@@ -33,8 +33,9 @@ class _PartySplashScreenState extends State<PartySplashScreen> {
 
     if (Platform.isAndroid) {
       // Check Android version
-      if (await _isAndroid12OrAbove()) {
+      // if (await _isAndroid12OrAbove()) {
 
+        if (true) {
 
         print("cmkdkmcmc");
 
@@ -67,12 +68,12 @@ class _PartySplashScreenState extends State<PartySplashScreen> {
     }
   }
 
-
-  Future<bool> _isAndroid12OrAbove() async {
-    final deviceInfo = DeviceInfoPlugin();
-    final androidInfo = await deviceInfo.androidInfo;
-    return androidInfo.version.sdkInt >= 31; // Android 12+
-  }
+  //
+  // Future<bool> _isAndroid12OrAbove() async {
+  //   final deviceInfo = DeviceInfoPlugin();
+  //   final androidInfo = await deviceInfo.androidInfo;
+  //   return androidInfo.version.sdkInt >= 31; // Android 12+
+  // }
 
 
 

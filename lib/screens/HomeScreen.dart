@@ -2423,8 +2423,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
 
     HomeScreen(),
     Adminsscreen(),
-   // RaisedTicketsScreen(),
-    SeatBookingsScreen(),
+    RaisedTicketsScreen(),
+   // SeatBookingsScreen(),
     CommunityCornerScreen(),
 
   ];
@@ -2452,7 +2452,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       margin: const EdgeInsets.all(20),
       height: 70,
       decoration: BoxDecoration(
-        color: Color(0xFF1371B5),
+        color: Colors.black,
 
         borderRadius: const BorderRadius.all(
           Radius.circular(15),
@@ -2478,47 +2478,43 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
 
           _buildNavItem(
               index: 0,
-              icon: 'assets/images/homeicon.png',
+              icon:"assets/images/home.png",
               label: 'Home',
               size: height * 0.6,
               height: height),
+
           _buildNavItem(
+
               index: 1,
-              icon: 'assets/images/admin.png',
-              label: 'Admins',
+              icon: 'assets/images/admin_icon.png',
+              label: 'Admin',
               size: height * 0.6,
               height: height),
 
           _buildNavItem(
               index: 2,
-              icon: 'assets/images/tickets.png',
+              icon: 'assets/images/ticket.png',
               label: 'Tickets',
               size: height * 0.6,
               height: height),
 
 
 
+          // _buildNavItem(
+          //     index: 3,
+          //     icon: 'assets/images/seat_booking.png',
+          //     label: 'Seat booking',
+          //     size: height * 0.6,
+          //     height: height),
+
           _buildNavItem(
               index: 3,
-              icon: 'assets/images/seat_booking.png',
-              label: 'Seat booking',
-              size: height * 0.6,
-              height: height),
-          _buildNavItem(
-              index: 4,
-              icon: 'assets/images/community.png',
+              icon: 'assets/images/people.png',
               label: 'Community',
-
 
               size: height * 0.6,
               height: height),
         ],
-
-
-
-
-
-
 
 
 
@@ -2574,97 +2570,50 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
 
     return GestureDetector(
       onTap: () => _onNavItemTapped(index), // Handle navigation and selection
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      child:
+
+      Column(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-
-          //  label==''   ?
-          //
-          //
-          //
-          //
-          // CircleAvatar(
-          //   radius: size / 2,
-          //   backgroundColor: Colors.white,
-          //   child: CircleAvatar(
-          //
-          //     backgroundColor: AppColor.whitecolor,
-          //     radius: (size / 2) - 4,
-          //     backgroundImage: AssetImage(
-          //
-          //         'assets/images/tickets.png'),
-          //   ),
-          // ):
-
-
-      //
-      // label=='Seat booking' ?
-      //      //
-      //      // CircleAvatar(
-      // //   backgroundColor: AppColor.whitecolor,
-      // //   radius: (size / 2) - 4,
-      // //   backgroundImage: AssetImage(
-      // //
-      // //
-      // //       'assets/images/seat_booking_icon.png'),
-      // // ):
-      //
-      //
-      //     Image.asset(
-      //       fit: BoxFit.cover,
-      //      // color:  Colors.white
-      //      //    ,
-      //
-      //       'assets/images/seat_booking.png'
-      //     ,width: height*.6,height:  height*.6,):
-
-              // Icon(
-          //
-          //   icon,
-          //   color: isSelected ? Colors.orange : Colors.white,
-          //   // Change color on selection
-          //   size: size,
-          // ),
-
-
-                       isSelected?
-                      Image.asset(
-                        fit: BoxFit.cover,
-                        // color: isSelected ? Colors.orange : null,
-                        icon
-                       ,width: height*.6,height:  height*.6,):
-                        SizedBox(),
-
-
-
-
           Image.asset(
+            icon,
+            width: height * .6,
+            height: height * .6,
+            color: isSelected ? Colors.white : Colors.white,
             fit: BoxFit.cover,
-            color: isSelected ? Colors.orange : null,
-
-            icon
-            ,width: height*.6,height:  height*.6,),
+          ),
 
 
+          if (label.isNotEmpty) ...[
+            const SizedBox(height: 4),
+            Text(
+              label,
+              style: TextStyle(
+                color: isSelected ? Colors.white : Colors.white,
+                fontSize: height * 0.25,
+              ),
+            ),
+          ],
 
-          label.isEmpty
-              ? const SizedBox(height: 0)
-              : Column(
-                  children: [
+          const SizedBox(height: 8),
 
-                    const SizedBox(height: 4),
 
-                     Text(
-                      label,
-                      style: TextStyle(
-                        color: isSelected ? Colors.orange : Colors.white,
-                        fontSize: height * 0.25,
-                      ),
-                    ),
-                  ],
-                ),
+          if (isSelected)
+            Container(
+              margin: const EdgeInsets.only(top: 0),
+              width: height * 1.2,
+              height: 2,
+              color: Colors.white,
+            ),
+          const SizedBox(height: 2),
+
         ],
-      ),
+      )
+
+
+
+
+
     );
   }
 }
@@ -2693,6 +2642,7 @@ class AccessScreen extends StatelessWidget {
     );
   }
 }
+
 
 
 class AddScreen extends StatelessWidget {

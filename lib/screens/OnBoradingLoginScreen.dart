@@ -201,7 +201,7 @@ class Onboradingloginscreen extends StatelessWidget {
                   GestureDetector(
                     onTap: (){
 
-                      Get.to(WebViewScreen());
+                   //   Get.to(WebViewScreen());
 
 
                     },

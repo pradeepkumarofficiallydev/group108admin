@@ -114,7 +114,15 @@
   public static j$.time.Instant toInstant(java.util.Date);
 }
 -keep class j$.util.DesugarCollections {
+  public static java.util.List synchronizedList(java.util.List);
   public static java.util.Map synchronizedMap(java.util.Map);
+  public static java.util.Set synchronizedSet(java.util.Set);
+  public static java.util.Collection unmodifiableCollection(java.util.Collection);
+  public static java.util.List unmodifiableList(java.util.List);
+  public static java.util.Map unmodifiableMap(java.util.Map);
+  public static java.util.Set unmodifiableSet(java.util.Set);
+  public static java.util.SortedMap unmodifiableSortedMap(java.util.SortedMap);
+  public static java.util.SortedSet unmodifiableSortedSet(java.util.SortedSet);
 }
 -keep class j$.util.DesugarTimeZone {
   public static java.util.TimeZone getTimeZone(java.lang.String);
@@ -282,12 +290,6 @@
   public j$.util.PrimitiveIterator$OfInt iterator();
   public int[] toArray();
 }
--keep class j$.util.stream.IntStream$VivifiedWrapper {
-  public static j$.util.stream.IntStream convert(java.util.stream.IntStream);
-}
--keep class j$.util.stream.IntStream$Wrapper {
-  public static java.util.stream.IntStream convert(j$.util.stream.IntStream);
-}
 -keep interface j$.util.stream.LongStream {
   public j$.util.PrimitiveIterator$OfLong iterator();
   public long[] toArray();
@@ -305,6 +307,7 @@
   public static j$.util.stream.Stream stream(java.util.function.Supplier,int,boolean);
 }
 -keep interface java.util.function.BiConsumer {
+  public void accept(java.lang.Object,java.lang.Object);
 }
 -keep interface java.util.function.BiFunction {
   public java.lang.Object apply(java.lang.Object,java.lang.Object);
@@ -322,7 +325,6 @@
   public boolean test(java.lang.Object);
 }
 -keep interface java.util.function.Supplier {
-  public java.lang.Object get();
 }
 -keep interface java.util.function.ToDoubleFunction {
 }
