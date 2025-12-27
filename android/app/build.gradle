@@ -1,0 +1,361 @@
+//buildscript {
+//    repositories {
+//        google()
+//        mavenCentral()
+//    }
+//    dependencies {
+//        classpath 'com.android.tools.build:gradle:8.3.0'  // or your current version
+//
+////        classpath 'com.android.tools.build:gradle:8.0.0' // or latest version
+//        classpath 'com.google.gms:google-services:4.4.2'
+//
+//
+//
+//
+//
+//
+//        // Check for the latest version
+//    }
+//}
+//
+//
+//
+//plugins {
+//    id "com.android.application"
+//    id "kotlin-android"
+//    id "dev.flutter.flutter-gradle-plugin"
+//
+//
+//}
+//
+//
+//
+//
+//android {
+//    namespace = "com.group108"
+//    compileSdk = 35
+//    ndkVersion = flutter.ndkVersion
+//
+//    compileOptions {
+//        sourceCompatibility = JavaVersion.VERSION_1_8
+//        targetCompatibility = JavaVersion.VERSION_1_8
+//        coreLibraryDesugaringEnabled true
+//
+//    }
+//
+//    kotlinOptions {
+//        jvmTarget = JavaVersion.VERSION_1_8
+//    }
+//
+//    defaultConfig {
+//        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+//        applicationId = "com.group108"
+//        // You can update the following values to match your application needs.
+//        // For more information, see: https://flutter.dev/to/review-gradle-config.
+//        minSdk = 21
+//        targetSdk = 35
+//        versionCode = 1
+//        versionName = '1.0.0'
+//
+//
+//    }
+//
+//    buildTypes {
+//        release {
+//            // TODO: Add your own signing config for the release build.
+//            // Signing with the debug keys for now, so `flutter run --release` works.
+//            signingConfig = signingConfigs.debug
+//        }
+//    }
+//}
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//allprojects {
+//    // ext.kotlin_version = '1.9.24' // Updated Kotlin version
+//
+//    repositories {
+//        google()
+//        mavenCentral()
+//    }
+//
+//    dependencies {
+////        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+//
+//        implementation platform('com.google.firebase:firebase-bom:32.3.1') // or latest stable
+//        implementation 'com.google.firebase:firebase-analytics' // or whatever you already have
+//        coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
+//
+//
+//
+//    }
+//
+//}
+//
+//flutter {
+//    source = "../.."
+//}
+//
+//
+//apply plugin: 'com.google.gms.google-services'
+//
+//
+
+////////////
+
+
+
+
+
+
+
+
+
+
+///////////
+
+//buildscript {
+//    repositories {
+//        google()
+//        mavenCentral()
+//    }
+//    dependencies {
+//        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.24" // Ensure Kotlin version is set
+//        classpath 'com.android.tools.build:gradle:8.3.0'  // Use the latest stable version
+//        classpath 'com.google.gms:google-services:4.4.2'   // Ensure compatibility with Firebase BOM
+//    }
+//}
+//
+//plugins {
+//    id "com.android.application"
+//    id "kotlin-android"
+//    id "dev.flutter.flutter-gradle-plugin"
+//}
+//
+//android {
+//    namespace = "com.group108"
+//    compileSdk = 35
+//    ndkVersion = flutter.ndkVersion
+//
+//    compileOptions {
+//        sourceCompatibility = JavaVersion.VERSION_1_8
+//        targetCompatibility = JavaVersion.VERSION_1_8
+//        coreLibraryDesugaringEnabled true
+//    }
+//
+//    kotlinOptions {
+//        jvmTarget = JavaVersion.VERSION_1_8
+//    }
+//
+//    defaultConfig {
+//        applicationId = "com.group108"
+//        minSdk = 23
+//        targetSdk = 35
+//        versionCode = 1
+//        versionName = '1.0.0'
+//    }
+//
+//    buildTypes {
+//        release {
+//            signingConfig = signingConfigs.debug // Update with your release signing config
+//        }
+//    }
+//}
+//
+//allprojects {
+//    repositories {
+//        google()
+//        mavenCentral()
+//    }
+//}
+//
+//dependencies {
+//    implementation platform('com.google.firebase:firebase-bom:32.3.1') // Use the latest stable version
+//    implementation 'com.google.firebase:firebase-analytics' // Add other Firebase dependencies as needed
+//    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
+//}
+//
+//flutter {
+//    source = "../.."
+//}
+//
+//apply plugin: 'com.google.gms.google-services'
+
+//////////////////
+
+
+
+
+
+
+
+
+
+
+buildscript {
+    ext.kotlin_version = '2.0.21' // Kotlin version for Kotlin 2.x compatibility
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:8.3.0"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.google.gms:google-services:4.4.2"
+    }
+}
+
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.nesrix"
+    compileSdk = 35
+    ndkVersion = flutter.ndkVersion
+
+//    compileOptions {
+//        sourceCompatibility = JavaVersion.VERSION_1_8
+//        targetCompatibility = JavaVersion.VERSION_1_8
+//        coreLibraryDesugaringEnabled true
+//    }
+//
+//    kotlinOptions {
+//        jvmTarget = "1.8"
+//    }
+
+
+//
+//        compileOptions {
+//            sourceCompatibility = JavaVersion.VERSION_17
+//            targetCompatibility = JavaVersion.VERSION_17
+//            coreLibraryDesugaringEnabled true
+//        }
+//
+//        kotlinOptions {
+//            jvmTarget = "17"
+//        }
+
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled true
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+  //  Nesrix
+
+    defaultConfig {
+        applicationId = "com.nesrix"
+        minSdk = 23
+        targetSdk = 35
+        versionCode = 12
+        versionName = '1.1.0'
+
+    }
+
+
+    def keystoreProperties = new Properties()
+    def keystorePropertiesFile = rootProject.file("key.properties")
+    if (keystorePropertiesFile.exists()) {
+        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    }
+
+    android {
+
+        signingConfigs {
+            release {
+//                keyAlias keystoreProperties['keyAlias']
+//                keyPassword keystoreProperties['keyPassword']
+//                storeFile file(keystoreProperties['storeFile'])
+//                storePassword keystoreProperties['storePassword']
+
+                keyAlias "secret_key"
+                keyPassword "group108"
+                storePassword "group108"
+                storeFile file("secret_key.jks")
+
+
+
+            }
+        }
+        buildTypes {
+            release {
+                signingConfig signingConfigs.release
+                shrinkResources false
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
+        }
+
+    }
+}
+
+
+
+
+
+//    buildTypes {
+//        release {
+//            signingConfig = signingConfigs.debug
+////            lintOptions {
+////                checkReleaseBuilds false
+////                abortOnError false
+////            }
+//
+//        }
+//    }
+//}
+
+//dramishbhutani@group-108.com
+
+/**
+ * Force older BouncyCastle to avoid Java 21 class file error
+ */
+//configurations.all {
+//    resolutionStrategy {
+//        force 'org.bouncycastle:bcprov-jdk18on:1.76'
+//    }
+//}
+
+
+
+
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:32.3.1')
+    implementation 'com.google.firebase:firebase-analytics'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
+}
+
+flutter {
+    source = "../.."
+}
+
+apply plugin: 'com.google.gms.google-services'
+
+
+

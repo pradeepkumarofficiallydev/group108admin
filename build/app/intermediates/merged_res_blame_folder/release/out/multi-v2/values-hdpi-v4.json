@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.nesrix.app-mergeReleaseResources-5:/values-hdpi-v4/values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "/Users/pradeep.kumar/.gradle/caches/transforms-3/180bd87c7cde19e91d40e4a35893a977/transformed/appcompat-1.6.1/res/values-hdpi-v4/values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
+                    }
+                }
+            ]
+        }
+    ]
+}
