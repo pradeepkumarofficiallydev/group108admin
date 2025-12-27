@@ -201,7 +201,7 @@
 
 
 buildscript {
-    ext.kotlin_version = '2.0.21' // Kotlin version for Kotlin 2.x compatibility
+    ext.kotlin_version = '2.0.22' // Kotlin version for Kotlin 2.x compatibility
 
     repositories {
         google()
@@ -211,7 +211,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:8.3.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "com.google.gms:google-services:4.4.2"
+        classpath "com.google.gms:google-services:4.4.1"
     }
 }
 
